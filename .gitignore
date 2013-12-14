@@ -1,6 +1,7 @@
 /target
 /lib
 /docs
+/doc
 /classes
 /checkouts
 pom.xml

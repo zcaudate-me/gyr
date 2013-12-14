@@ -16,7 +16,7 @@ module.exports = function(config) {
     files: [
     'harness/js/angular.js',
     'harness/js/angular-mocks.js',
-    'harness/purnam-js-unit.js'
+    'harness/purnam-angular-unit.js'
     ],
 
 
