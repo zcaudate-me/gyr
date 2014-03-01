@@ -1,7 +1,7 @@
-(ns purnam.test-angular
+(ns gyr.test-core
   (:use [midje.sweet :exclude [contains]]
         purnam.checks
-        purnam.angular))
+        gyr.core))
 
 (fact "inj-array"
   (inj-array '[<ARG1> <ARG2>])

@@ -1,49 +1,61 @@
-(ns purnam.angular.filters
-  (:use [purnam.native :only [aget-in aset-in augment-fn-string check-fn]])
+(ns gyr.filters
   (:require [goog.object :as o]
-            [goog.array :as a])
-  (:require-macros [purnam.core :as j])
+            [goog.array :as a]
+            [purnam.native.functions :as j])
   (:use-macros [purnam.core :only [obj arr ! def.n]]
-               [purnam.angular :only [def.module def.filter]]))
+               [gyr.core :only [def.module def.filter]]))
+  
+ (defn augment-fn-string [func]
+  (if (string? func)
+     (fn [x]
+        (j/aget-in x (st/split func #"\.")))
+      func))
 
-(def.module purnam.filters [])
+ (defn check-fn [func chk]
+  (fn [x]
+    (let [res (func x)]
+      (if (fn? chk)
+         (chk res)
+         (= res chk)))))
 
-(def.filter purnam.filters.subArray []
+(def.module gyr.filters [])
+
+(def.filter gyr.filters.subArray []
   (fn [input start end]
     (let [out (if input (a/clone input) (arr))]
       (a/slice out start end))))
 
-(def.filter purnam.filters.pr []
+(def.filter gyr.filters.pr []
   (fn [input title]
     (js/console.log title input)
     input))
 
       
-(def.filter purnam.filters.unique []
+(def.filter gyr.filters.unique []
   (fn [input]
       (a/removeDuplicates input (arr))))
 
-(def.filter purnam.filters.toArray []
+(def.filter gyr.filters.toArray []
   (fn [input]
     (a/toArray input)))
 
-(def.filter purnam.filters.toObject []
+(def.filter gyr.filters.toObject []
   (fn [input kfunc]
     (a/toObject input kfunc)))
 
-(def.filter purnam.filters.call []
+(def.filter gyr.filters.call []
   (fn [input func & args]
     (apply func input args)))
 
-(def.filter purnam.filters.apply []
+(def.filter gyr.filters.apply []
   (fn [input func args]
     (.apply func args)))
 
-(def.filter purnam.filters.map []
+(def.filter gyr.filters.map []
   (fn [input func]
     (.map input (augment-fn-string func))))
 
-(def.filter purnam.filters.filter []
+(def.filter gyr.filters.filter []
   (fn 
     ([input func]
       (a/filter input (augment-fn-string func)))
@@ -51,23 +63,23 @@
       (a/filter input 
         (check-fn (augment-fn-string func) chk)))))
 
-(def.filter purnam.filters.take []
+(def.filter gyr.filters.take []
   (fn [input num]
     (a/slice input 0 num)))
 
-(def.filter purnam.filters.drop []
+(def.filter gyr.filters.drop []
   (fn [input num]
     (a/slice input num)))
     
-(def.filter purnam.filters.flatten []
+(def.filter gyr.filters.flatten []
   (fn [input]
     (a/flatten input)))
         
-(def.filter purnam.filters.count []
+(def.filter gyr.filters.count []
   (fn [input]
     (.-length input)))
     
-(def.filter purnam.filters.sortBy []
+(def.filter gyr.filters.sortBy []
   (fn 
     ([input func]
       (let [f   (augment-fn-string func)
@@ -85,14 +97,14 @@
             (< (f a) (f b))))
         out))))
 
-(def.filter purnam.filters.change []
+(def.filter gyr.filters.change []
   (fn [input]
     (let [out (arr)]
       (input.forEach
         (fn [v] (out.push v)))
        out)))
 
-(def.filter purnam.filters.partition []
+(def.filter gyr.filters.partition []
   (fn [input n]
       (loop [i    0
              j    -1
@@ -111,7 +123,7 @@
                   (out.|j|.push input.|i|)
                   (recur (inc i) j out))))))
 ;; TODO
-(def.filter purnam.filters.groupBy []
+(def.filter gyr.filters.groupBy []
   (fn 
     ([input func]
      (a/bucket input (augment-fn-string func)))

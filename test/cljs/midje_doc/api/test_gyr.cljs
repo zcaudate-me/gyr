@@ -1,13 +1,13 @@
-(ns midje-doc.api.purnam-test-angular
-  (:require [purnam.core]
-            [purnam.types.clojure :as types]
-            [midje-doc.api.purnam-angular :as test-app])
+(ns midje-doc.api.test-gyr
+  (:require [purnam.test]
+            [purnam.native]
+            [midje-doc.api.gyr :as test-app])
   (:use-macros [purnam.core :only [f.n def.n obj arr]]
-               [purnam.angular :only [def.module def.controller def.service]]
-               [purnam.test :only [init describe is it fact facts]]
-               [purnam.test.angular :only [describe.ng describe.controller it-uses it-uses-filter it-compiles]]))
+               [purnam.test :only [describe is it]]
+               [gyr.core :only [def.module def.controller def.service]]
+               [gyr.test :only [describe.ng describe.controller it-uses it-uses-filter it-compiles]]))
 
-[[:chapter {:title "purnam.test.angular" :tag "purnam-test-angular"}]]
+[[:chapter {:title "gyr.test" :tag "purnam-test-angular"}]]
 
 [[:section {:title "init" :tag "init-test-angular"}]]
 
@@ -16,7 +16,7 @@
 (comment
   (:require [purnam.core])
   (:use-macros [purnam.test :only [init]]
-               [purnam.test.angular :only 
+               [gyr.test :only 
                  [describe.ng it-uses it-compiles it-uses-filter]]))
 
 [[:section {:title "services" :tag "services"}]]

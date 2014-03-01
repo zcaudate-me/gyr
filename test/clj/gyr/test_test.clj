@@ -1,7 +1,7 @@
-(ns purnam.test-jasmin-angular
+(ns gyr.test-test
   (:use [midje.sweet :exclude [contains]]
         purnam.checks
-        purnam.test.angular))
+        gyr.test))
 
 
 (fact "describe.ng"
@@ -48,24 +48,28 @@
                        $httpBackend))]]
       :vars [o (range 20)]}))
   => '(let [spec (js-obj)]
-        (aset spec "o" (range 20))
-        (js/describe
-         "Testing"
-         (clojure.core/fn []
-           (js/beforeEach (js/module "my.app"))
-           (js/beforeEach
-            (js/inject
-             (array "$httpBackend" "$http" "$mockFilter" "$compile" "$rootScope"
-                    (fn [$httpBackend $http $mockFilter $compile $rootScope]
-                      (aset spec "$http" $http)
-                      (aset spec "$compile" $compile)
-                      (aset spec "$filter" $mockFilter)
-                      (aset spec "$scope"
-                            (let [obj# (purnam.native/aget-in $rootScope [])
-                                  fn# (aget obj# "$new")] (.call fn# obj#)))
-                      (aset spec "$httpBackend"
-                            (do (-> $httpBackend (.when "GET" "/hello")
-                                    (.respond 200 "hello world")) $httpBackend)))))) nil))))
+       (aset spec "o" (range 20))
+       (js/describe
+        "Testing"
+        (clojure.core/fn []
+          (js/beforeEach (js/module "my.app"))
+          (js/beforeEach
+           (js/inject
+            (array "$httpBackend" "$http" "$mockFilter" "$compile" "$rootScope"
+                   (fn [$httpBackend $http $mockFilter $compile $rootScope]
+                     (aset spec "$http" $http)
+                     (aset spec "$compile" $compile)
+                     (aset spec "$filter" $mockFilter)
+                     (aset spec "$scope"
+                           (let [obj# (purnam.common/aget-in $rootScope [])
+                                 fn# (aget obj# "$new")]
+                             (.call fn# obj#)))
+                     (aset spec "$httpBackend"
+                           (do (-> $httpBackend
+                                   (.when "GET" "/hello")
+                                   (.respond 200 "hello world"))
+                               $httpBackend))))))
+          nil))))
 
 
 (fact "is-uses"
@@ -122,20 +126,19 @@
            (is r.0 0)))))
 
   => '(let [spec (js-obj)]
-       (js/describe "Testing Filters"
-                    (clojure.core/fn [] (js/beforeEach
-                                         (js/module "sample.filters"))
-                      (js/beforeEach
-                       (js/inject
-                        (array "$filter"
-                               (fn [$filter]
-                                 (aset spec "$filter" $filter)))))
-
-                      (it (let [r ((let [obj# (purnam.native/aget-in spec [])
-                                         fn# (aget obj# "$filter")]
-                                     (.call fn# obj# "range")) (arr) 5)]
-                            (is (purnam.native/aget-in r ["length"]) 5)
-                            (is (purnam.native/aget-in r ["0"]) 0))) nil)))
+       (js/describe
+        "Testing Filters"
+        (clojure.core/fn []
+          (js/beforeEach (js/module "sample.filters"))
+          (js/beforeEach
+           (js/inject
+            (array "$filter"
+                   (fn [$filter] (aset spec "$filter" $filter)))))
+          (it (let [r ((let [obj# (purnam.common/aget-in spec [])
+                             fn# (aget obj# "$filter")]
+                         (.call fn# obj# "range")) (arr) 5)]
+                (purnam.test/is (purnam.common/aget-in r ["length"]) 5 "'r.length'" "'5'")
+                (purnam.test/is (purnam.common/aget-in r ["0"]) 0 "'r.0'" "'0'"))) nil))))
 
 (fact "describe.controller"
   (macroexpand-1
@@ -161,16 +164,16 @@
                      $rootScope <V1-FORM>]
                    (aset spec "$scope"
                          (let [scp#
-                               (let [obj# (purnam.native/aget-in $rootScope [])
+                               (let [obj# (purnam.common/aget-in $rootScope [])
                                      fn# (aget obj# "$new")]
                                  (.call fn# obj#))]
                            ($controller "<CONTROLLER-NAME>"
                                         (obj :$scope scp#)) scp#))
                    (aset spec ":<V1>" <V1-FORM>)
                    (aset spec ":<V2>" <V2-FORM>)))))
-        (<FUNC> (purnam.native/aget-in spec ["$scope" "<VAR>"]))
-        (<FUNC> (purnam.native/aget-in <V1> ["<VAR>"]))
-        (<FUNC> (purnam.native/aget-in <V2> ["<VAR>"])) nil))))
+        (<FUNC> (purnam.common/aget-in spec ["$scope" "<VAR>"]))
+        (<FUNC> (purnam.common/aget-in <V1> ["<VAR>"]))
+        (<FUNC> (purnam.common/aget-in <V2> ["<VAR>"])) nil))))
 
 
   (comment
@@ -294,4 +297,4 @@
           (<FUNC> spec.$scope.<VAR>)
           (<FUNC> spec.<V1>.<VAR>)
           (<FUNC> spec.<V2>.<VAR>))))
-    ))
+    )

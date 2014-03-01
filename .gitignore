@@ -15,5 +15,4 @@ pom.xml.asc
 .DS_Store
 .#*
 .nrepl-port
-harness/purnam-angular-unit.js
 *.iml

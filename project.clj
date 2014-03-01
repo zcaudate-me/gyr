@@ -1,27 +1,26 @@
-(defproject im.chit/purnam-angular "0.3.2-SNAPSHOT"
-  :description "Use angular.js like its angular.cljs"
-  :url "http://www.github.com/zcaudate/purnam-angular"
+(defproject im.chit/gyr "0.3.1"
+  :description "Write angular.js like its angular.cljs"
+  :url "http://www.github.com/purnam/gyr"
   :license {:name "The MIT License"
             :url "http://opensource.org/licencses/MIT"}
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [im.chit/purnam "0.3.2-SNAPSHOT"]]
+                 [im.chit/purnam "0.4.3"]]
   :profiles {:dev {:dependencies [[org.clojure/clojurescript "0.0-2080"]
                                   [midje "1.6.0"]]
                    :plugins [[lein-midje "3.1.3"]
                              [lein-cljsbuild "1.0.0"]]}}
-  :source-paths ["src/cljs"]
   :test-paths ["test/clj"]
   :documentation {:files {"docs/index"
                           {:input "test/cljs/midje_doc/purnam_angular_guide.cljs"
-                           :title "purnam-angular"
-                           :sub-title "Clojurescript "
+                           :title "gyr"
+                           :sub-title "Angularjs extensions for clojurescript"
                            :author "Chris Zheng"
                            :email  "z@caudate.me"
                            :tracking "UA-31320512-2"}}}
   :cljsbuild
   {:builds
-   [{:source-paths ["src/cljs" "test/cljs"],
+   [{:source-paths ["src" "test/cljs"],
      :id "js-test",
      :compiler {:pretty-print true,
-                :output-to "harness/purnam-angular-unit.js",
+                :output-to "target/gyr-test.js",
                 :optimizations :whitespace}}]})

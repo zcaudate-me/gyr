@@ -1,9 +1,9 @@
-(ns purnam.test.angular
+(ns gyr.test
   (:require [clojure.string :as s]
-            [purnam.js :refer [js-expand change-roots-map cons-sym-root]]
-            [purnam.test :refer [describe-fn it-preprocess it-fn
-                                 describe-default-options
-                                 describe-roots-map]]))
+            [purnam.common.scope :refer [change-roots-map]]
+            [purnam.test.jasmine :refer [describe-fn it-preprocess it-fn
+                                        describe-default-options
+                                        describe-roots-map]]))
 
 (def l list)
 

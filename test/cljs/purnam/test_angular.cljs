@@ -1,13 +1,12 @@
 (ns purnam.test-angular
-  (:use [purnam.native :only [aget-in aset-in]])
-  (:require [goog.object :as o])
-  (:require-macros [purnam.core :as j])
+  (:require [goog.object :as o]
+            [purnam.test])
   (:use-macros [purnam.core :only [obj arr ! def.n]]
-               [purnam.test :only [init describe it is is-not]]
-               [purnam.angular :only [def.module def.config def.factory
+               [purnam.test :only [describe it is is-not]]
+               [gyr.core :only [def.module def.config def.factory
                                       def.filter def.controller
                                       def.service def.directive]]
-               [purnam.test.angular :only [describe.controller describe.ng
+               [gyr.test :only [describe.controller describe.ng
                                            it-uses it-compiles it-uses-filter]]))
 
 
@@ -30,11 +29,11 @@
                           (fn [$filter]
                             (aset spec "$filter" $filter)))))
 
-                 (it (let [r ((let [obj# (purnam.native/aget-in spec [])
+                 (it (let [r ((let [obj# (purnam.native.functions/aget-in spec [])
                                     fn# (aget obj# "$filter")]
                                 (.call fn# obj# "range")) (arr) 5)]
-                       (is (purnam.native/aget-in r ["length"]) 5)
-                       (is (purnam.native/aget-in r ["0"]) 0))) nil)))
+                       (is (purnam.native.functions/aget-in r ["length"]) 5)
+                       (is (purnam.native.functions/aget-in r ["0"]) 0))) nil)))
 
 
 (describe.ng

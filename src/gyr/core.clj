@@ -1,5 +1,5 @@
-(ns purnam.angular
-  (:use [purnam.js :only [js-expand]])
+(ns gyr.core
+  (:use [purnam.common.expand :only [expand]])
   (:require [clojure.string :as s]))
 
 (defn inj-array [params]
@@ -33,7 +33,7 @@
           (angular-module ss params))))
 
 (defmacro def.config [mod params & body]
-  (list '.config (angular-module (str mod)) (inj-fn params (js-expand body))))
+  (list '.config (angular-module (str mod)) (inj-fn params (expand body))))
 
 (defn value-fn [sym f body]
   (let [[module ctrl] (module-syms sym)
@@ -44,7 +44,7 @@
                 ctrl dsym))))
 
 (defn function-fn [sym f params body]
-  (let [fn-body (inj-fn params (js-expand body))]
+  (let [fn-body (inj-fn params (expand body))]
     (value-fn sym f fn-body)))
 
 (defn angular-function [f]

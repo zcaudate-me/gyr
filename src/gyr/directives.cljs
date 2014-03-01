@@ -1,12 +1,11 @@
-(ns purnam.angular.directives
-  (:use [purnam.native :only [aget-in aset-in]])
+(ns gyr.directives
   (:require-macros [purnam.core :as j])
   (:use-macros [purnam.core :only [obj ! def.n]]
-               [purnam.angular :only [def.module def.directive]]))
+               [gyr.core :only [def.module def.directive]]))
 
-(def.module purnam [])
+(def.module gyr [])
 
-(def.directive purnam.ngBlur [$parse]
+(def.directive gyr.ngBlur [$parse]
   (fn [scope elem attrs]
     (let [f ($parse attrs.ngBlur)]
       (elem.bind
@@ -14,7 +13,7 @@
        (fn [e]
          (scope.$apply (fn [] (f scope (obj :$event e)))))))))
 
-(def.directive purnam.ngFocus [$parse]
+(def.directive gyr.ngFocus [$parse]
   (fn [scope elem attrs]
     (let [f ($parse attrs.ngFocus)]
       (elem.bind
@@ -22,7 +21,7 @@
        (fn [e]
          (scope.$apply (fn [] (f scope (obj :$event e)))))))))
 
-(def.directive purnam.ngLet []
+(def.directive gyr.ngLet []
   (obj
     :scope false
     :link 
