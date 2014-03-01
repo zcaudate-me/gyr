@@ -7,16 +7,15 @@
                [gyr.core :only [def.module def.controller def.service]]
                [gyr.test :only [describe.ng describe.controller it-uses it-uses-filter it-compiles]]))
 
-[[:chapter {:title "gyr.test" :tag "purnam-test-angular"}]]
+[[:chapter {:title "gyr.test" :tag "gyr-test"}]]
 
-[[:section {:title "init" :tag "init-test-angular"}]]
+[[:section {:title "init" :tag "gyr-init"}]]
 
-"All tests require the following within the namespace declaration."
+"All tests require the following declaration in the namespace. Note that `purnam.test` is required"
 
 (comment
-  (:require [purnam.core])
-  (:use-macros [purnam.test :only [init]]
-               [gyr.test :only 
+  (:require [purnam.test])
+  (:use-macros [gyr.test :only 
                  [describe.ng it-uses it-compiles it-uses-filter]]))
 
 [[:section {:title "services" :tag "services"}]]

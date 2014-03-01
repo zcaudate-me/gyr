@@ -9,11 +9,20 @@
                [purnam.test :only [describe is it]]
                [gyr.test :only [describe.ng describe.controller it-uses]]))
 
-[[:chapter {:title "purnam.angular" :tag "purnam-angular"}]]
+[[:chapter {:title "gyr.core" :tag "gyr-core"}]]
 
 "Libraries to work with angular.js"
 
 [[:section {:title "init" :tag "init-angular"}]]
+
+"`gyr.core` macros are imported through the :use-macro call:"
+
+(comment
+  (:use-macros [gyr.core :only [def.module def.controller 
+                                def.value def.constant 
+                                def.filter def.factory 
+                                def.provider def.service
+                                def.directive def.config]]))
 
 
 [[:section {:title "def.module" :tag "def-module"}]]

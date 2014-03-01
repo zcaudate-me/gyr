@@ -10,8 +10,8 @@
                    :plugins [[lein-midje "3.1.3"]
                              [lein-cljsbuild "1.0.0"]]}}
   :test-paths ["test/clj"]
-  :documentation {:files {"docs/index"
-                          {:input "test/cljs/midje_doc/purnam_angular_guide.cljs"
+  :documentation {:files {"doc/index"
+                          {:input "test/cljs/midje_doc/gyr_guide.clj"
                            :title "gyr"
                            :sub-title "Angularjs extensions for clojurescript"
                            :author "Chris Zheng"
