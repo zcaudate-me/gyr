@@ -1,0 +1,680 @@
+<html><head><meta content="chrome=1" http-equiv="X-UA-Compatible" /><meta charset="utf-8" /><meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport" /><title>gyr</title><style>body {
+  padding:50px;
+  font:14px/1.5 Helvetica, Arial, sans-serif;
+  color:#777;
+  font-weight:300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color:#222;
+  margin:0 0 20px;
+}
+
+p, ul, ol, table, pre, dl {
+  margin:0 0 20px;
+}
+
+h1, h2, h3 {
+  line-height:1.1;
+}
+
+h1 {
+  font-size:28px;
+}
+
+h2 {
+  color:#393939;
+}
+
+h4, h5, h6 {
+  color:#494949;
+  margin:0;
+}
+
+header h4{
+  margin: 10 0 0 0px;
+}
+
+a {
+  color:#39c;
+  font-weight:400;
+  text-decoration:none;
+}
+
+a small {
+  font-size:11px;
+  color:#777;
+  margin-top:-0.6em;
+  display:block;
+}
+
+.wrapper {
+  width:860px;
+  margin:0 auto;
+}
+
+.figure div.img {
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+blockquote {
+  border-left:1px solid #e5e5e5;
+  margin:0;
+  padding:0 0 0 20px;
+  font-style:italic;
+}
+
+code, pre {
+  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+  color:#333;
+  font-size:12px;
+}
+
+pre {
+  padding:8px 15px;
+  background: #f8f8f8;  
+  border-radius:5px;
+  border:1px solid #e5e5e5;
+  overflow-x: auto;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+th, td {
+  text-align:left;
+  padding:5px 10px;
+  border-bottom:1px solid #e5e5e5;
+}
+
+dt {
+  color:#444;
+  font-weight:700;
+}
+
+th {
+  color:#444;
+}
+
+img {
+  max-width:100%;
+}
+
+header {
+  width:270px;
+  float:left;
+  /*position:fixed;*/
+}
+
+header ul {
+  list-style:none;
+  height:40px;
+  
+  padding:0;
+  
+  background: #eee;
+  background: -moz-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
+  background: -webkit-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+  background: -o-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+  background: -ms-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+  background: linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+  
+  border-radius:5px;
+  border:1px solid #d2d2d2;
+  box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
+  width:270px;
+}
+
+header li {
+  width:89px;
+  float:left;
+  border-right:1px solid #d2d2d2;
+  height:40px;
+}
+
+header ul a {
+  line-height:1;
+  font-size:11px;
+  color:#999;
+  display:block;
+  text-align:center;
+  padding-top:6px;
+  height:40px;
+}
+
+strong {
+  font-weight:700;
+}
+
+header ul li + li {
+  width:88px;
+  border-left:1px solid #fff;
+}
+
+header ul li + li + li {
+  border-right:none;
+  width:89px;
+}
+
+header ul a strong {
+  font-size:14px;
+  display:block;
+  color:#222;
+}
+
+section {
+  width: 60%;
+  float:right;
+  padding-bottom:50px;
+  padding-right: 10%;
+}
+
+small {
+  font-size:11px;
+}
+
+hr {
+  border:0;
+  background:#e5e5e5;
+  height:1px;
+  margin:0 0 20px;
+}
+
+footer {
+  width:270px;
+  float:left;
+  position:fixed;
+  bottom:50px;
+}
+
+header div.heading {
+  display:none;
+}
+
+
+@media print, screen and (max-width: 960px) {
+  
+  div.wrapper {
+    width:auto;
+    margin:0;
+  }
+  
+  header, section, footer {
+    float:none;
+    position:static;
+    width:auto;
+  }
+  
+  header div.heading {
+    display:block;
+  }
+    
+  section div.heading {
+    display:none;
+  }
+  
+  section {
+    border:1px solid #e5e5e5;
+    border-width:1px 0;
+    padding:20px 0;
+    margin:0 0 20px;
+  }
+  
+  header a small {
+    display:inline;
+  }
+  
+  header ul {
+    position:absolute;
+    right:50px;
+    top:52px;
+  }
+}
+
+@media print, screen and (max-width: 720px) {
+  body {
+    word-wrap:break-word;
+  }
+  
+  header {
+    padding:0;
+  }
+  
+  header ul, header p.view {
+    position:static;
+  }
+  
+  pre, code {
+    word-wrap:normal;
+  }
+}
+
+@media print, screen and (max-width: 480px) {
+  body {
+    padding:15px;
+  }
+  
+  header ul {
+    display:none;
+  }
+}
+
+@media print {
+  body {
+    padding:0.4in;
+    font-size:12pt;
+    color:#444;
+  }
+}
+
+
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold; } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+.type-csharp .highlight .k { color: #0000FF }
+.type-csharp .highlight .kt { color: #0000FF }
+.type-csharp .highlight .nf { color: #000000; font-weight: normal }
+.type-csharp .highlight .nc { color: #2B91AF }
+.type-csharp .highlight .nn { color: #000000 }
+.type-csharp .highlight .s { color: #A31515 }
+.type-csharp .highlight .sc { color: #A31515 }
+
+
+</style></head><body><header><div class="heading"><h1>gyr</h1><h3>Angularjs extensions for clojurescript</h3><hr /><div class="info"><h5>Author: Chris Zheng<b>&nbsp;&nbsp;<a href="mailto:z@caudate.me">(z@caudate.me)</a></b></h5><h5>Library: v0.3.1</h5><h5>Date: 01 March 2014</h5><h5>Website: <a href="http://www.github.com/purnam/gyr">http://www.github.com/purnam/gyr</a></h5><h5>Generated By: <a href="http://www.github.com/zcaudate/lein-midje-doc">MidjeDoc</a></h5></div><br /><hr /></div><h4><a href="#introduction">1 &nbsp; Introduction</a></h4><h4><a href="#installation">2 &nbsp; Installation</a></h4><h4><a href="#usage">3 &nbsp; Usage</a></h4><h5>&nbsp;&nbsp;<i><a href="#dsl-for-angular">3.1 &nbsp; DSL for Angular</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#testing-for-angular">3.2 &nbsp; Testing for Angular</a></i></h5><h4><a href="#gyr-core">4 &nbsp; gyr.core</a></h4><h5>&nbsp;&nbsp;<i><a href="#init-angular">4.1 &nbsp; init</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-module">4.2 &nbsp; def.module</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-config">4.3 &nbsp; def.config</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-controller">4.4 &nbsp; def.controller</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-directive">4.5 &nbsp; def.directive</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-filter">4.6 &nbsp; def.filter</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-constant">4.7 &nbsp; def.constant</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-value">4.8 &nbsp; def.value</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-service">4.9 &nbsp; def.service</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-factory">4.10 &nbsp; def.factory</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#def-provider">4.11 &nbsp; def.provider</a></i></h5><h4><a href="#gyr-test">5 &nbsp; gyr.test</a></h4><h5>&nbsp;&nbsp;<i><a href="#gyr-init">5.1 &nbsp; init</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#services">5.2 &nbsp; services</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#filters">5.3 &nbsp; filters</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#directives">5.4 &nbsp; directives</a></i></h5><h5>&nbsp;&nbsp;<i><a href="#controllers">5.5 &nbsp; controllers</a></i></h5><br /></header><section><div class="heading"><h1>gyr</h1><h3>Angularjs extensions for clojurescript</h3><hr /><div class="info"><h5>Author: Chris Zheng<b>&nbsp;&nbsp;<a href="mailto:z@caudate.me">(z@caudate.me)</a></b></h5><h5>Library: v0.3.1</h5><h5>Date: 01 March 2014</h5><h5>Website: <a href="http://www.github.com/purnam/gyr">http://www.github.com/purnam/gyr</a></h5><h5>Generated By: <a href="http://www.github.com/zcaudate/lein-midje-doc">MidjeDoc</a></h5></div><br /><hr /></div><div><a name="introduction"></a><h2><b>1 &nbsp;&nbsp; Introduction</b></h2></div><div><p><a href='https://github.com/purnam/gyr'>gyr</a> has been spun out from the <a href='https://github.com/purnam/purnam'>purnam</a> core libraries into its own seperate project. By using a mixture of javascript/clojurescript syntax, <code>angular.js</code> became smaller, more readable and easier to handle. The library offers:</p><ul><li><a href='#gyr-core'>gyr.core</a> - a simple dsl for eliminating boilerplate <em>angular.js</em></li><li><a href='#gyr-test'>gyr.test</a> - testing macros for eliminating more boilerplate test code for services, controllers, directives and filters</li><li><a href='#gyr-filters'>gyr.filters</a> - currently undocumented</li></ul><p>More complete examples can be seen <a href='https://www.github.com/purnam/example.gyr'>here</a></p></div><div><a name="installation"></a><h2><b>2 &nbsp;&nbsp; Installation</b></h2></div><div><p>To install <code>gyr</code>, add to <code>project.clj</code> dependencies:</p><p>  <code>&#91;im.chit/gyr</code> &quot;<code>0.3.1</code>&quot;<code>&#93;</code> </p><p><a href='https://github.com/purnam/purnam'>purnam</a> come included with <code>gyr</code> so that all the language extension macros are avaliable as well.</p></div><div><a name="usage"></a><h2><b>3 &nbsp;&nbsp; Usage</b></h2></div><div><a name="dsl-for-angular"></a><h3>3.1 &nbsp;&nbsp; DSL for Angular</h3></div><div><p><a href='http://angularjs.org'>Angular.js</a> is the premier javascript framework for building large-scale, single-page applications. <a href='#gyr-core'>gyr.core</a> allows clean, readable definitions of angular.js modules and tests. Below is the definition of an angular.js module, a storage service, and a controller that uses the service.</p></div><div><a name="module-definition"></a><h4><i>e.3.1  &nbsp;-&nbsp; module definition</i></h4><div class="highlight"><pre><span class="p">(</span><span class="nf">def.module</span> <span class="nv">myApp</span> <span class="p">[])</span>
+
+<span class="p">(</span><span class="nf">def.service</span> <span class="nv">myApp.storage</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">store</span> <span class="p">(</span><span class="nf">atom</span> <span class="p">{})]</span>
+    <span class="p">(</span><span class="nf">obj</span> <span class="ss">:put</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">k</span> <span class="nv">v</span><span class="p">]</span> <span class="p">(</span><span class="nf">swap!</span> <span class="nv">store</span> <span class="o">#</span><span class="p">(</span><span class="nb">assoc </span><span class="nv">%</span> <span class="nv">k</span> <span class="nv">v</span><span class="p">)))</span>
+         <span class="ss">:get</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">k</span><span class="p">]</span> <span class="p">(</span><span class="o">@</span><span class="nv">store</span> <span class="nv">k</span><span class="p">))</span>
+         <span class="ss">:clear</span> <span class="p">(</span><span class="k">fn </span><span class="p">[]</span> <span class="p">(</span><span class="nf">reset!</span> <span class="nv">store</span> <span class="p">{}))</span>
+         <span class="ss">:print</span> <span class="p">(</span><span class="k">fn </span><span class="p">[]</span> <span class="p">(</span><span class="nf">js/console.log</span> <span class="p">(</span><span class="nf">clj-&gt;js</span> <span class="o">@</span><span class="nv">store</span><span class="p">))))))</span>
+
+<span class="p">(</span><span class="nf">def.controller</span> <span class="nv">myApp.AppCtrl</span> <span class="p">[</span><span class="nv">$scope</span> <span class="nv">storage</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.key</span> <span class="s">"hello"</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.val</span> <span class="s">"world"</span><span class="p">)</span>  
+  <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.printStore</span> <span class="nv">storage.print</span><span class="p">)</span> 
+  <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.clearStore</span> <span class="nv">storage.clear</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.putStore</span> <span class="nv">storage.put</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.getStore</span> <span class="nv">storage.get</span><span class="p">))</span>
+</pre></div>
+</div><div><a name="testing-for-angular"></a><h3>3.2 &nbsp;&nbsp; Testing for Angular</h3></div><div><p>Testing angular.js apps are quite brain intensive when using pure javascript. The <a href='#gyr-test'>gyr.test</a> namespace takes care of all the injections for us</p></div><div><a name="testing-services"></a><h4><i>e.3.2  &nbsp;-&nbsp; testing services</i></h4><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+  <span class="p">{</span><span class="ss">:doc</span> <span class="s">"Storage"</span>
+   <span class="ss">:module</span> <span class="nv">myApp</span>
+   <span class="ss">:inject</span> <span class="p">[</span><span class="nv">storage</span><span class="p">]}</span>
+  <span class="p">(</span><span class="nf">it</span> <span class="s">"allows saving and retriving"</span>
+    <span class="p">(</span><span class="nf">storage.put</span> <span class="s">"hello"</span> <span class="s">"world"</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="p">(</span><span class="nf">storage.get</span> <span class="s">"hello"</span><span class="p">)</span> <span class="s">"world"</span><span class="p">)</span>
+    
+    <span class="p">(</span><span class="nf">storage.clear</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="p">(</span><span class="nf">storage.get</span> <span class="s">"hello"</span><span class="p">)</span> <span class="nv">nil</span><span class="p">)))</span>
+</pre></div>
+</div><div><a name="testing-controllers"></a><h4><i>e.3.3  &nbsp;-&nbsp; testing controllers</i></h4><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.controller</span> 
+  <span class="p">{</span><span class="ss">:doc</span> <span class="s">"AppCtrl"</span>
+   <span class="ss">:module</span> <span class="nv">myApp</span>
+   <span class="ss">:controller</span> <span class="nv">AppCtrl</span><span class="p">}</span>
+   
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"has key and val within the scope"</span>
+   <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.key</span> <span class="s">"hello"</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.val</span> <span class="s">"world"</span><span class="p">))</span>
+ 
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"has put and get functionality"</span>
+   <span class="p">(</span><span class="nf">$scope.putStore</span> <span class="nv">$scope.key</span> <span class="nv">$scope.val</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">is</span> <span class="p">(</span><span class="nf">$scope.getStore</span> <span class="s">"hello"</span><span class="p">)</span> <span class="s">"world"</span><span class="p">))</span>
+   
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"additional tests"</span>
+   <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.key</span> <span class="s">"bye"</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">$scope.putStore</span> <span class="nv">$scope.key</span> <span class="nv">$scope.val</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">is</span> <span class="p">(</span><span class="nf">$scope.getStore</span> <span class="s">"hello"</span><span class="p">)</span> <span class="nv">nil</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">is</span> <span class="p">(</span><span class="nf">$scope.getStore</span> <span class="s">"bye"</span><span class="p">)</span> <span class="s">"world"</span><span class="p">)))</span>
+</pre></div>
+</div><div><a name="gyr-core"></a><h2><b>4 &nbsp;&nbsp; gyr.core</b></h2></div><div><p>Libraries to work with angular.js</p></div><div><a name="init-angular"></a><h3>4.1 &nbsp;&nbsp; init</h3></div><div><p><code>gyr.core</code> macros are imported through the :use-macro call:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="ss">:use-macros</span> <span class="p">[</span><span class="nv">gyr.core</span> <span class="ss">:only</span> <span class="p">[</span><span class="nv">def.module</span> <span class="nv">def.controller</span> 
+                              <span class="nv">def.value</span> <span class="nv">def.constant</span> 
+                              <span class="nv">def.filter</span> <span class="nv">def.factory</span> 
+                              <span class="nv">def.provider</span> <span class="nv">def.service</span>
+                              <span class="nv">def.directive</span> <span class="nv">def.config</span><span class="p">]])</span>
+</pre></div>
+</div><div><a name="def-module"></a><h3>4.2 &nbsp;&nbsp; def.module</h3></div><div><p><code>def.module</code> provides an easy way to define angular modules. The following clojurescript code generates the equivalent javascript code below it:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.module</span> <span class="nv">my.app</span> <span class="p">[</span><span class="nv">ui</span> <span class="nv">ui.bootstrap</span><span class="p">])</span>
+</pre></div>
+</div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ui&#39;</span><span class="p">,</span> <span class="s1">&#39;ui.bootstrap&#39;</span><span class="p">])</span>
+</pre></div>
+</div><div><p>Typically, the <code>def.module</code> is at the very top of the file, one module is defined for one clojure namespace.</p></div><div><a name="def-config"></a><h3>4.3 &nbsp;&nbsp; def.config</h3></div><div><p><code>def.config</code> is used to setup module providers. </p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.config</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;</span> <span class="p">[</span><span class="nv">...</span> <span class="nv">&lt;PROVIDERS&gt;</span> <span class="nv">...</span><span class="p">]</span>
+   <span class="nv">...</span> 
+   <span class="nv">&lt;FUNCTION</span> <span class="nv">BODY&gt;</span>
+   <span class="nv">...</span>     <span class="p">)</span>
+</pre></div>
+</div><div><p>It is most commonly used to setup the routing for an application.</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.config</span> <span class="nv">my.app</span> <span class="p">[</span><span class="nv">$locationProvider</span> <span class="nv">$routeProvider</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">doto </span><span class="nv">$locationProvider</span> <span class="p">(</span><span class="nf">.hashPrefix</span> <span class="s">"!"</span><span class="p">))</span>
+  <span class="p">(</span><span class="nb">doto </span><span class="nv">$routeProvider</span>
+    <span class="p">(</span><span class="nf">.when</span> <span class="s">""</span> <span class="p">(</span><span class="nf">obj</span> <span class="ss">:redirectTo</span> <span class="s">"/home"</span><span class="p">))))</span>
+</pre></div>
+</div><div><p>The equivalent javascript code can be seen below.</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+         <span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;$locationProvider&#39;</span><span class="p">,</span> <span class="s1">&#39;$routeProvider&#39;</span><span class="p">,</span> 
+               <span class="kd">function</span><span class="p">(</span><span class="nx">$locationProvider</span><span class="p">,</span> <span class="nx">$routeProvider</span><span class="p">){</span>
+                 <span class="nx">$locationProvider</span><span class="p">.</span><span class="nx">hashPrefix</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">);</span>
+                 <span class="nx">$routeProvider</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">redirectTo</span><span class="o">:</span> <span class="s1">&#39;/home&#39;</span><span class="p">});</span>
+           <span class="p">}]);</span>
+</pre></div>
+</div><div><a name="def-controller"></a><h3>4.4 &nbsp;&nbsp; def.controller</h3></div><div><p><code>def.controller</code> defines a controller. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.controller</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;CONTROLLER</span> <span class="nv">NAME&gt;</span> <span class="p">[</span><span class="nv">...</span> <span class="nv">&lt;INJECTIONS&gt;</span> <span class="nv">...</span><span class="p">]</span>
+   <span class="nv">...</span> 
+   <span class="nv">&lt;CONTROLLER</span> <span class="nv">BODY&gt;</span>
+   <span class="nv">...</span> <span class="p">)</span>
+</pre></div>
+</div><div><p>A sample controller</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.controller</span> <span class="nv">my.app.SimpleCtrl</span> <span class="p">[</span><span class="nv">$scope</span><span class="p">]</span>
+   <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.msg</span> <span class="s">"Hello"</span><span class="p">)</span>
+   <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.setMessage</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">msg</span><span class="p">]</span> <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.msg</span> <span class="nv">msg</span><span class="p">))))</span>
+</pre></div>
+</div><div><p>Produces the equivalent javascript code:</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;SimpleCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
+                    <span class="nx">$scope</span><span class="p">.</span><span class="nx">msg</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span>
+                    <span class="nx">$scope</span><span class="p">.</span><span class="nx">setMessage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">msg</span><span class="p">){</span>
+                      <span class="nx">$scope</span><span class="p">.</span><span class="nx">msg</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">;</span>
+                    <span class="p">}}])</span>
+</pre></div>
+</div><div><a name="def-directive"></a><h3>4.5 &nbsp;&nbsp; def.directive</h3></div><div><p><code>def.directive</code> defines a directive. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.directive</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;DIRECTIVE</span> <span class="nv">NAME&gt;</span> <span class="p">[</span><span class="nv">...</span> <span class="nv">&lt;INJECTIONS&gt;</span> <span class="nv">...</span><span class="p">]</span> 
+   <span class="c1">;; Initialisation code to return a function:</span>
+   <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">$scope</span> <span class="nv">element</span> <span class="nv">attrs</span><span class="p">]</span>
+      <span class="nv">....</span> <span class="nv">&lt;FUNCTION&gt;</span> <span class="nv">....</span>  <span class="p">))</span>
+</pre></div>
+</div><div><p>A sample directive</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.directive</span> <span class="nv">my.app.appWelcome</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">$scope</span> <span class="nv">element</span> <span class="nv">attrs</span><span class="p">]</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">html</span> <span class="p">(</span><span class="nf">element.html</span><span class="p">)]</span>
+      <span class="p">(</span><span class="nf">element.html</span> <span class="p">(</span><span class="nb">str </span><span class="s">"Welcome &lt;strong&gt;"</span> <span class="nv">html</span> <span class="s">"&lt;/strong&gt;"</span><span class="p">)))))</span>
+</pre></div>
+</div><div><p>Produces the equivalent javascript code:</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;appWelcome&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">element</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+             <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">();</span>
+             <span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;Welcome: &lt;strong&gt;&#39;</span> <span class="o">+</span> <span class="nx">html</span> <span class="o">+</span> <span class="s1">&#39;&lt;/strong&gt;&#39;</span><span class="p">);</span>
+          <span class="p">};}]);</span>
+</pre></div>
+</div><div><a name="def-filter"></a><h3>4.6 &nbsp;&nbsp; def.filter</h3></div><div><p><code>def.filter</code> defines a filter. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.filter</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;FILTER</span> <span class="nv">NAME&gt;</span> <span class="p">[</span><span class="nv">...</span> <span class="nv">&lt;INJECTIONS&gt;</span> <span class="nv">...</span><span class="p">]</span>
+ 
+   <span class="c1">;; Initialisation code to return a function:</span>
+ 
+   <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">input</span> <span class="o">&amp;</span> <span class="nv">args</span><span class="p">]</span>
+      <span class="nv">....</span> <span class="nv">&lt;FUNCTION&gt;</span> <span class="nv">....</span> <span class="p">))</span>
+</pre></div>
+</div><div><p>The sample filter</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.filter</span> <span class="nv">my.app.range</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">input</span> <span class="nv">total</span><span class="p">]</span>
+    <span class="p">(</span><span class="nb">when </span><span class="nv">input</span>
+      <span class="p">(</span><span class="nb">doseq </span><span class="p">[</span><span class="nv">i</span> <span class="p">(</span><span class="nb">range </span><span class="p">(</span><span class="nf">js/parseInt</span> <span class="nv">total</span><span class="p">))]</span>
+        <span class="p">(</span><span class="nf">input.push</span> <span class="nv">i</span><span class="p">))</span>
+      <span class="nv">input</span><span class="p">)))</span>
+</pre></div>
+</div><div><p>Produces the equivalent javascript code:</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">input</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+          <span class="nx">total</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">total</span><span class="p">);</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span><span class="nx">total</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="nx">input</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+          <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
+        <span class="p">};</span>
+      <span class="p">}]);</span>
+</pre></div>
+</div><div><a name="def-constant"></a><h3>4.7 &nbsp;&nbsp; def.constant</h3></div><div><p><code>def.constant</code> defines a constant. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.value</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;CONSTANT</span> <span class="nv">NAME&gt;</span>
+  <span class="nv">&lt;CONSTANT&gt;</span><span class="p">)</span>
+</pre></div>
+</div><div><p>The sample constant</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.constant</span> <span class="nv">my.app.MeaningOfLife</span> <span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div><div><p>Produces the equivalent javascript code:</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+       <span class="p">.</span><span class="nx">constant</span><span class="p">(</span><span class="s1">&#39;MeaningOfLife&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
+</pre></div>
+</div><div><a name="def-value"></a><h3>4.8 &nbsp;&nbsp; def.value</h3></div><div><p><code>def.value</code> defines a value. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.value</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;VALUE</span> <span class="nv">NAME&gt;</span>
+  <span class="nv">&lt;VALUE&gt;</span><span class="p">)</span>
+</pre></div>
+</div><div><p>The sample value</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.value</span> <span class="nv">my.app.AnotherMeaningOfLife</span> <span class="s">"A Mystery"</span><span class="p">)</span>
+</pre></div>
+</div><div><p>Produces the equivalent javascript code:</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+       <span class="p">.</span><span class="nx">value</span><span class="p">(</span><span class="s1">&#39;AnotherMeaningOfLife&#39;</span><span class="p">,</span> <span class="s1">&#39;A Mystery&#39;</span><span class="p">);</span>
+</pre></div>
+</div><div><a name="def-service"></a><h3>4.9 &nbsp;&nbsp; def.service</h3></div><div><p><code>def.service</code> defines a service. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.service</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;SERVICE</span> <span class="nv">NAME&gt;</span> <span class="p">[</span><span class="nv">...</span> <span class="nv">&lt;INJECTIONS&gt;</span> <span class="nv">...</span><span class="p">]</span>
+    <span class="nv">&lt;RETURN</span> <span class="nv">OBJECT&gt;</span>  <span class="p">)</span>
+</pre></div>
+</div><div><p>The sample service</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.service</span> <span class="nv">my.app.LoginService</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="nf">obj</span> <span class="ss">:user</span> <span class="p">{</span><span class="ss">:login</span> <span class="s">"login"</span>
+              <span class="ss">:password</span> <span class="s">"secret"</span>
+              <span class="ss">:greeting</span> <span class="s">"hello world"</span><span class="p">}</span>
+       <span class="ss">:changeLogin</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">login</span><span class="p">]</span>
+                      <span class="p">(</span><span class="nf">!</span> <span class="nv">this.user.login</span> <span class="nv">login</span><span class="p">))))</span>
+</pre></div>
+</div><div><p>Produces the equivalent javascript code:</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+       <span class="p">.</span><span class="nx">service</span><span class="p">(</span><span class="s1">&#39;LoginService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">(){</span>
+         <span class="k">return</span> <span class="p">{</span><span class="nx">user</span><span class="o">:</span> <span class="p">{</span><span class="o">:</span><span class="nx">login</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+                        <span class="o">:</span><span class="nx">password</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+                        <span class="o">:</span><span class="nx">greeting</span> <span class="s1">&#39;hello world&#39;</span><span class="p">},</span>
+                 <span class="nx">changeLogin</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">login</span><span class="p">){</span>
+                                  <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span> <span class="o">=</span> <span class="nx">login</span><span class="p">;}}}]);</span>
+</pre></div>
+</div><div><a name="def-factory"></a><h3>4.10 &nbsp;&nbsp; def.factory</h3></div><div><p><code>def.factory</code> defines a factory. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.factory</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;FACTORY</span> <span class="nv">NAME&gt;</span> <span class="p">[</span><span class="nv">...</span> <span class="nv">&lt;INJECTIONS&gt;</span> <span class="nv">...</span><span class="p">]</span>
+    <span class="nv">&lt;RETURN</span> <span class="nv">OBJECT&gt;</span>  <span class="p">)</span>
+</pre></div>
+</div><div><p>The sample factory</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.factory</span> <span class="nv">my.app.LoginService</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="nf">obj</span> <span class="ss">:user</span> <span class="p">{</span><span class="ss">:login</span> <span class="s">"login"</span>
+              <span class="ss">:password</span> <span class="s">"secret"</span>
+              <span class="ss">:greeting</span> <span class="s">"hello world"</span><span class="p">}</span>
+       <span class="ss">:changeLogin</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">login</span><span class="p">]</span>
+                      <span class="p">(</span><span class="nf">!</span> <span class="nv">this.user.login</span> <span class="nv">login</span><span class="p">))))</span>
+</pre></div>
+</div><div><p>Produces the equivalent javascript code:</p></div><div><div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;my.app&#39;</span><span class="p">)</span>
+       <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;LoginService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">(){</span>
+         <span class="k">return</span> <span class="p">{</span><span class="nx">user</span><span class="o">:</span> <span class="p">{</span><span class="o">:</span><span class="nx">login</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+                        <span class="o">:</span><span class="nx">password</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+                        <span class="o">:</span><span class="nx">greeting</span> <span class="s1">&#39;hello world&#39;</span><span class="p">},</span>
+                 <span class="nx">changeLogin</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">login</span><span class="p">){</span>
+                                  <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span> <span class="o">=</span> <span class="nx">login</span><span class="p">;}}}]);</span>
+</pre></div>
+</div><div><a name="def-provider"></a><h3>4.11 &nbsp;&nbsp; def.provider</h3></div><div><p><code>def.provider</code> defines a provider. The typical usage is like this:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.provider</span> <span class="nv">&lt;MODULE</span> <span class="nv">NAME&gt;.&lt;SERVICE</span> <span class="nv">NAME&gt;</span> <span class="p">[</span><span class="nv">...</span> <span class="nv">&lt;INJECTIONS&gt;</span> <span class="nv">...</span><span class="p">]</span>
+    <span class="nv">&lt;RETURN</span> <span class="nv">OBJECT&gt;</span>  <span class="p">)</span>
+</pre></div>
+</div><div><p>The following is a definition, configuration, and usage of a provider</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">def.provider</span> <span class="nv">my.app.HelloWorld</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="nf">obj</span> <span class="ss">:name</span> <span class="s">"Default"</span>
+       <span class="ss">:$get</span> <span class="p">(</span><span class="k">fn </span><span class="p">[]</span>
+               <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">n</span> <span class="nv">self.name</span><span class="p">]</span>
+                 <span class="p">(</span><span class="nf">obj</span> <span class="ss">:sayHello</span>
+                      <span class="p">(</span><span class="k">fn </span><span class="p">[]</span> <span class="p">(</span><span class="nb">str </span><span class="s">"Hello "</span> <span class="nv">n</span> <span class="s">"!"</span><span class="p">)))))</span>
+       <span class="ss">:setName</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">name</span><span class="p">]</span>
+                  <span class="p">(</span><span class="nf">!</span> <span class="nv">self.name</span> <span class="nv">name</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="nf">def.config</span> <span class="nv">my.app</span> <span class="p">[</span><span class="nv">HelloWorldProvider</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">HelloWorldProvider.setName</span> <span class="s">"World"</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nf">def.controller</span> <span class="nv">my.app.sfpMainCtrl</span> <span class="p">[</span><span class="nv">$scope</span> <span class="nv">HelloWorld</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">!</span> <span class="nv">$scope.hello</span> <span class="p">(</span><span class="nb">str </span><span class="p">(</span><span class="nf">HelloWorld.sayHello</span><span class="p">)</span> <span class="s">" From Provider"</span><span class="p">)))</span>
+</pre></div>
+</div><div><a name="gyr-test"></a><h2><b>5 &nbsp;&nbsp; gyr.test</b></h2></div><div><a name="gyr-init"></a><h3>5.1 &nbsp;&nbsp; init</h3></div><div><p>All tests require the following declaration in the namespace. Note that <code>purnam.test</code> is required</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">purnam.test</span><span class="p">])</span>
+<span class="p">(</span><span class="ss">:use-macros</span> <span class="p">[</span><span class="nv">gyr.test</span> <span class="ss">:only</span> 
+               <span class="p">[</span><span class="nv">describe.ng</span> <span class="nv">it-uses</span> <span class="nv">it-compiles</span> <span class="nv">it-uses-filter</span><span class="p">]])</span>
+</pre></div>
+</div><div><a name="services"></a><h3>5.2 &nbsp;&nbsp; services</h3></div><div><p>Angular constants, values, services, factories and providers are all tested the same way: with <code>describe.ng</code> and <code>it-uses</code>. There are a couple ways of testing out functionality. The easiest is with <code>:inject</code>. The definition are from previously defined examples - <a href='#def-constant'>constant</a>, <a href='#def-value'>value</a></p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+  <span class="p">{</span><span class="ss">:doc</span> <span class="s">"The Meaning of Life"</span>
+   <span class="ss">:module</span> <span class="nv">my.app</span>
+   <span class="ss">:inject</span> <span class="p">[</span><span class="nv">MeaningOfLife</span> <span class="nv">AnotherMeaningOfLife</span><span class="p">]}</span>
+   
+  <span class="p">(</span><span class="nf">it</span> <span class="s">"should be contentious"</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">MeaningOfLife</span> <span class="mi">42</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">AnotherMeaningOfLife</span> <span class="s">"A Mystery"</span><span class="p">)))</span>
+</pre></div>
+</div><div><p><code>:inject</code> can also be used to bind other values within the modules</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+  <span class="p">{</span><span class="ss">:doc</span> <span class="s">"The Meaning of Life"</span>
+   <span class="ss">:module</span> <span class="nv">my.app</span>
+   <span class="ss">:inject</span> <span class="p">[[</span><span class="nv">MeaningOfLife</span> <span class="p">([]</span> <span class="s">"Don&#39;t Know"</span><span class="p">)]]}</span>
+
+  <span class="p">(</span><span class="nf">it</span> <span class="s">"should be unclear"</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">MeaningOfLife</span> <span class="s">"Don&#39;t Know"</span><span class="p">)))</span>
+</pre></div>
+</div><div><p>or to reference other defined services:</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+  <span class="p">{</span><span class="ss">:doc</span> <span class="s">"The Meaning of Life"</span>
+   <span class="ss">:module</span> <span class="nv">my.app</span>
+   <span class="ss">:inject</span> <span class="p">[[</span><span class="nv">AnotherMeaningOfLife</span> 
+            <span class="p">([</span><span class="nv">MeaningOfLife</span><span class="p">]</span> 
+              <span class="p">(</span><span class="nb">+ </span><span class="mi">13</span> <span class="nv">MeaningOfLife</span><span class="p">))]]}</span>
+
+  <span class="p">(</span><span class="nf">it</span> <span class="s">"should be another random number"</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">AnotherMeaningOfLife</span> <span class="mi">55</span><span class="p">)))</span>
+</pre></div>
+</div><div><p><a href='#def-service'>services</a> are tested the same way. However this time, we will use <code>it-uses</code> to inject them into the test suite. It uses just puts the default</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+  <span class="p">{</span><span class="ss">:doc</span> <span class="s">"Login Service"</span>
+   <span class="ss">:module</span> <span class="nv">my.app</span><span class="p">}</span>
+  
+  <span class="p">(</span><span class="nf">it-uses</span> <span class="p">[</span><span class="nv">LoginService</span><span class="p">]</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">LoginService.user.login</span> <span class="s">"login"</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">LoginService.user.password</span> <span class="s">"secret"</span><span class="p">)))</span>
+</pre></div>
+</div><div><a name="filters"></a><h3>5.3 &nbsp;&nbsp; filters</h3></div><div><p>Filters are dependent on the <code>$filters</code> service and so are tested in the following way.</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+ <span class="p">{</span><span class="ss">:doc</span>  <span class="s">"Testing Filters"</span>
+  <span class="ss">:module</span> <span class="nv">my.app</span><span class="p">}</span>
+
+ <span class="p">(</span><span class="nf">it-uses</span> <span class="p">[</span><span class="nv">$filter</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">r</span> <span class="p">((</span><span class="nf">$filter</span> <span class="s">"range"</span><span class="p">)</span> <span class="p">(</span><span class="nf">arr</span><span class="p">)</span> <span class="mi">5</span><span class="p">)]</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">r.length</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">is</span> <span class="nv">r</span> <span class="p">(</span><span class="nf">arr</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))))</span>
+</pre></div>
+</div><div><p>A convience macro <code>it-uses-filter</code> can also be used to achieve the same effect.</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+ <span class="p">{</span><span class="ss">:doc</span>  <span class="s">"Testing Filters"</span>
+  <span class="ss">:module</span> <span class="nv">my.app</span><span class="p">}</span>
+
+  <span class="p">(</span><span class="nf">it-uses-filter</span> <span class="p">[</span><span class="nv">range</span><span class="p">]</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">r</span> <span class="p">(</span><span class="nb">range </span><span class="p">(</span><span class="nf">arr</span><span class="p">)</span> <span class="mi">5</span><span class="p">)]</span>
+     <span class="p">(</span><span class="nf">is</span> <span class="nv">r.length</span> <span class="mi">5</span><span class="p">)</span>
+     <span class="p">(</span><span class="nf">is</span> <span class="nv">r</span> <span class="p">(</span><span class="nf">arr</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))))</span>
+</pre></div>
+</div><div><a name="directives"></a><h3>5.4 &nbsp;&nbsp; directives</h3></div><div><p>Directives require the <code>$compile</code> and <code>$rootScope</code> services.</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+ <span class="p">{</span><span class="ss">:doc</span>  <span class="s">"Directives"</span>
+  <span class="ss">:module</span> <span class="nv">my.app</span>
+  <span class="ss">:inject</span> <span class="p">[</span><span class="nv">$compile</span> <span class="nv">$rootScope</span><span class="p">]}</span>
+
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"should change the html output"</span>
+     <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">ele</span> <span class="p">((</span><span class="nf">$compile</span> <span class="s">"&lt;div app-welcome&gt;User&lt;/div&gt;"</span><span class="p">)</span>
+                <span class="nv">$rootScope</span><span class="p">)]</span>
+                <span class="c1">;;(js/console.log ele (ele.html))</span>
+       <span class="p">(</span><span class="nf">is</span> <span class="p">(</span><span class="nf">ele.html</span><span class="p">)</span> <span class="p">(</span><span class="nf">type</span> <span class="s">"Welome &lt;strong&gt;User&lt;/strong&gt;"</span><span class="p">)))))</span>
+</pre></div>
+</div><div><p>For convenience, there is the <code>it-compiles</code> macro which hides the implementation details.</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+ <span class="p">{</span><span class="ss">:doc</span>  <span class="s">"Directives"</span>
+  <span class="ss">:module</span> <span class="nv">my.app</span><span class="p">}</span>
+
+ <span class="p">(</span><span class="nf">it-compiles</span> <span class="p">[</span><span class="nv">ele</span> <span class="s">"&lt;div app-welcome&gt;User&lt;/div&gt;"</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">is</span> <span class="p">(</span><span class="nf">ele.html</span><span class="p">)</span> <span class="p">(</span><span class="nf">type</span> <span class="s">"Welome &lt;strong&gt;User&lt;/strong&gt;"</span><span class="p">))))</span>
+</pre></div>
+</div><div><a name="controllers"></a><h3>5.5 &nbsp;&nbsp; controllers</h3></div><div><p>Controllers require a bit more boilerplate to set up testing. The following is a test for <a href='#def-controller'>SimpleCtrl</a> using describe.ng</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.ng</span>
+ <span class="p">{</span><span class="ss">:doc</span> <span class="s">"A sample controller for testing purposes"</span>
+  <span class="ss">:module</span> <span class="nv">my.app</span>
+  <span class="ss">:inject</span> <span class="p">[[</span><span class="nv">$scope</span> <span class="p">([</span><span class="nv">$rootScope</span> <span class="nv">$controller</span><span class="p">]</span>
+                     <span class="p">(</span><span class="nf">$controller</span> <span class="s">"SimpleCtrl"</span> <span class="p">(</span><span class="nf">obj</span> <span class="ss">:$scope</span> <span class="p">(</span><span class="nf">$rootScope.$new</span><span class="p">))))]]}</span>
+                     
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"should set a message within the $scope"</span>
+   <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.msg</span> <span class="s">"Hello"</span><span class="p">))</span>
+
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"should be able to change the message within the $scope"</span>
+   <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">$scope.setMessage</span> <span class="s">"World!"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.msg</span> <span class="s">"World!"</span><span class="p">))</span>
+
+   <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">$scope.setMessage</span> <span class="s">"Angular Rocks!"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.msg</span> <span class="s">"Angular Rocks!"</span><span class="p">))))</span>
+</pre></div>
+</div><div><p><code>describe.controller</code> hides all implementation details to make the tests much more clearer to read.</p></div><div><div class="highlight"><pre><span class="p">(</span><span class="nf">describe.controller</span>
+ <span class="p">{</span><span class="ss">:doc</span> <span class="s">"A sample controller for testing purposes"</span>
+  <span class="ss">:module</span> <span class="nv">my.app</span>
+  <span class="ss">:controller</span> <span class="nv">SimpleCtrl</span><span class="p">}</span>
+
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"should set a message within the $scope"</span>
+   <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.msg</span> <span class="s">"Hello"</span><span class="p">))</span>
+
+ <span class="p">(</span><span class="nf">it</span> <span class="s">"should be able to change the message within the $scope"</span>
+   <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">$scope.setMessage</span> <span class="s">"World!"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.msg</span> <span class="s">"World!"</span><span class="p">))</span>
+
+   <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">$scope.setMessage</span> <span class="s">"Angular Rocks!"</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">is</span> <span class="nv">$scope.msg</span> <span class="s">"Angular Rocks!"</span><span class="p">))))</span>
+</pre></div>
+</div></section></body><script type="text/javascript">var metas = document.getElementsByTagName('meta');
+var i;
+if (navigator.userAgent.match(/iPhone/i)) {
+  for (i=0; i<metas.length; i++) {
+    if (metas[i].name == "viewport") {
+      metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+    }
+  }
+  document.addEventListener("gesturestart", gestureStart, false);
+}
+function gestureStart() {
+  for (i=0; i<metas.length; i++) {
+    if (metas[i].name == "viewport") {
+      metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+    }
+  }
+}</script><script>var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-31320512-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();</script></html>
