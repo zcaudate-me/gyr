@@ -35,6 +35,9 @@
 (defmacro def.config [mod params & body]
   (list '.config (angular-module (str mod)) (inj-fn params (expand body))))
 
+(defmacro def.run [mod params & body]
+  (list '.run (angular-module (str mod)) (inj-fn params (expand body))))
+
 (defn value-fn [sym f body]
   (let [[module ctrl] (module-syms sym)
         dsym (symbol (s/join "_" (s/split (str sym) #"\.")))]
